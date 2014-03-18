@@ -4,14 +4,14 @@ library(ggplot2)
 
 # Set the working directory
 
-wd = "/Users/tracyt/Documents/swc/new/2014-03-17-nyu-R/instructor_notes/R/"
+wd = "/Users/tracyt/Desktop/example"
 setwd(wd)
 
 
 # Bring in the data
 
-control <- read.table("testdata/Bdf2_annotated_average_counts_control.txt", header=FALSE, sep="\t")
-exp <- read.table("testdata/Bdf2_annotated_average_counts_experiment.txt", header=FALSE, sep="\t")
+control <- read.table("Bdf2_annotated_average_counts_control.txt", header=FALSE, sep="\t")
+exp <- read.table("Bdf2_annotated_average_counts_experiment.txt", header=FALSE, sep="\t")
 
 # Look at the data
 
@@ -102,6 +102,15 @@ ggplot(all, aes(log(all$control),log(all$exp))) +
   geom_point()
 
 # Change the axis labels 
+
+
+ggplot(all, aes(log(control),log(exp))) +
+  geom_point() +
+  xlab("log(control)") +
+  ylab("log(exp)") +
+  ggtitle("Control versus Experiment") 
+
+# Add colors
 
 ggplot(all, aes(log(control),log(exp))) +
   geom_point(aes(color=label), size=3) +
